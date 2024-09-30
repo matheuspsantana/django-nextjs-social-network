@@ -1,0 +1,9 @@
+# Virutal Environment
+.venv/
+
+# Pycache 
+__pycache__/
+*.pyc
+
+# Django's default files
+*.sqlite3
