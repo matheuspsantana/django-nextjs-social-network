@@ -18,9 +18,9 @@ These are the features that will be developed (not necessarily in this order):
 
 - `Django` :white_check_mark:
 - `Django REST Framework` :warning:
-- `PostgreSQL` :warning:
-- `Docker` :warning:
-- `Docker Compose` :warning:
+- `PostgreSQL` :white_check_mark:
+- `Docker` :white_check_mark:
+- `Docker Compose` :white_check_mark:
 - `JWT Tokens` :warning:
 - `WebSockets` :warning:
 
