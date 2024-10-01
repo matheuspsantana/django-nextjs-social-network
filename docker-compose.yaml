@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:17.0
+    container_name: social-network-db
+    networks:
+      network:
+        aliases:
+          - ${POSTGRES_HOST}
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+  api:
+    build: 
+      context: backend
+    container_name: social-network-api
+    networks:
+      network:
+        aliases:
+          - api
+    command: bash -c "
+      python manage.py makemigrations && 
+      python manage.py migrate && 
+      python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:${BACKEND_API_PORT}"
+    environment:
+      - POSTGRES_NAME
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_HOST
+      - POSTGRES_PORT
+    depends_on:
+      - db
+
+networks:
+  network:
+    name: social-network-network
+    driver: bridge

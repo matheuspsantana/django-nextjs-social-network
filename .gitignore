@@ -1,4 +1,4 @@
-# Virutal Environment
+# Virtual Environment
 .venv/
 
 # Pycache 
@@ -7,3 +7,12 @@ __pycache__/
 
 # Django's default files
 *.sqlite3
+
+# Database volume
+data/
+
+# VS Code default folders
+.vscode/
+
+# Environment variables file
+.env
