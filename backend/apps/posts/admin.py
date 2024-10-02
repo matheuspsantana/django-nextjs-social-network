@@ -5,6 +5,6 @@ from posts.models import Posts
 
 @admin.register(Posts)
 class PostsAdmin(admin.ModelAdmin):
-    list_display = ('user', 'body', 'created_at')
-    list_display_links = ('user', 'body', 'created_at')
+    list_display = ('profile', 'body', 'created_at')
+    list_display_links = ('profile', 'body', 'created_at')
     
