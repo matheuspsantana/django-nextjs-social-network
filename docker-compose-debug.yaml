@@ -7,8 +7,8 @@ services:
       network:
         aliases:
           - ${POSTGRES_HOST}
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
+    # volumes:
+    #   - ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB
       - POSTGRES_USER
@@ -27,7 +27,7 @@ services:
       python manage.py makemigrations && 
       python manage.py migrate && 
       python manage.py createsuperuser --noinput && 
-      python -m debugpy --listen 0.0.0.0:$5678 manage.py runserver 0.0.0.0:8000"
+      python -m debugpy --listen 0.0.0.0:5678 manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend:/app
     ports:
