@@ -31,8 +31,8 @@ services:
     volumes:
       - ./backend:/app
     ports:
-      - "8000:${BACKEND_API_PORT}"
-      - "5678:${BACKEND_API_DEBUG_PORT}"
+      - "8000:${API_PORT}"
+      - "5678:${API_DEBUG_PORT}"
     environment:
       - POSTGRES_NAME
       - POSTGRES_USER
@@ -43,6 +43,27 @@ services:
       - DJANGO_SUPERUSER_PASSWORD
       - DJANGO_SUPERUSER_EMAIL
     depends_on:
+      - db
+  frontend:
+    build: 
+      context: frontend
+    container_name: social-network-frontend
+    restart: always
+    networks:
+      network:
+        aliases:
+          - frontend
+    command: bash -c "yarn dev"
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:${FRONTEND_PORT}"
+    environment:
+      - API_HOST
+      - API_PORT
+      - WATCHPACK_POLLING
+    depends_on:
+      - api
       - db
 
 networks:

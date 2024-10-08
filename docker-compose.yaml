@@ -27,7 +27,7 @@ services:
     volumes:
       - ./backend:/app
     ports:
-      - "8000:${BACKEND_API_PORT}"
+      - "8000:${API_PORT}"
     environment:
       - POSTGRES_NAME
       - POSTGRES_USER
